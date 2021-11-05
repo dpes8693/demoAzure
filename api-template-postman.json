@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "69a183e3-ddad-4271-8b8e-dfae5dca0370",
+		"name": "Indoor map api template",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload stateset and get statesetId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"styles\":[\r\n      {\r\n         \"keyname\":\"temperature\",\r\n         \"type\":\"number\",\r\n         \"rules\":[\r\n            {\r\n                \"range\": {\r\n                \"minimum\": 10,\r\n                \"exclusiveMaximum\": 35\r\n                },\r\n                \"color\": \"#343deb\"\r\n            },\r\n            {\r\n                \"range\": {\r\n                \"minimum\": 35,\r\n                \"exclusiveMaximum\": 50\r\n                },\r\n                \"color\": \"#eba834\"\r\n            }\r\n         ]\r\n      },\r\n      {\r\n         \"keyname\":\"detection\",\r\n         \"type\":\"number\",\r\n         \"rules\":[\r\n            {\r\n                \"range\": {\r\n                \"minimum\": -1,\r\n                \"exclusiveMaximum\": 0\r\n                },\r\n                \"color\": \"#FFFF00\"\r\n            },\r\n            {\r\n                \"range\": {\r\n                \"minimum\": -2,\r\n                \"exclusiveMaximum\": -1\r\n                },\r\n                \"color\": \"#FF0000\"\r\n            }\r\n        ]\r\n      }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us.atlas.microsoft.com/featurestatesets?api-version=2.0&datasetId={datasetId}&subscription-key={subscription-key}",
+					"protocol": "https",
+					"host": [
+						"us",
+						"atlas",
+						"microsoft",
+						"com"
+					],
+					"path": [
+						"featurestatesets"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2.0"
+						},
+						{
+							"key": "datasetId",
+							"value": "{datasetId}"
+						},
+						{
+							"key": "subscription-key",
+							"value": "{subscription-key}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update UNIT state(temperature)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"states\": [\r\n        {\r\n            \"keyName\": \"temperature\",\r\n            \"value\": 40,\r\n            \"eventTimestamp\": \"2021-10-26T00:00:00\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "https://us.atlas.microsoft.com/featureStateSets/{statesetId}/featureStates/{featureId}?subscription-key={subscription-key}&api-version=2.0",
+					"protocol": "https",
+					"host": [
+						"us",
+						"atlas",
+						"microsoft",
+						"com"
+					],
+					"path": [
+						"featureStateSets",
+						"{statesetId}",
+						"featureStates",
+						"{featureId}"
+					],
+					"query": [
+						{
+							"key": "subscription-key",
+							"value": "{subscription-key}"
+						},
+						{
+							"key": "api-version",
+							"value": "2.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update UNIT state(detection)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"states\": [\r\n        {\r\n            \"keyName\": \"detection\",\r\n            \"value\": -1,\r\n            \"eventTimestamp\": \"2021-10-26T00:00:00\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "https://us.atlas.microsoft.com/featureStateSets/{statesetId}/featureStates/{featureId}?subscription-key={subscription-key}&api-version=2.0",
+					"protocol": "https",
+					"host": [
+						"us",
+						"atlas",
+						"microsoft",
+						"com"
+					],
+					"path": [
+						"featureStateSets",
+						"{statesetId}",
+						"featureStates",
+						"{featureId}"
+					],
+					"query": [
+						{
+							"key": "subscription-key",
+							"value": "{subscription-key}"
+						},
+						{
+							"key": "api-version",
+							"value": "2.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check UNIT state",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us.atlas.microsoft.com/featureStateSets/{statesetId}/featureStates/{featureId}?subscription-key={subscription-key}&api-version=2.0",
+					"protocol": "https",
+					"host": [
+						"us",
+						"atlas",
+						"microsoft",
+						"com"
+					],
+					"path": [
+						"featureStateSets",
+						"{statesetId}",
+						"featureStates",
+						"{featureId}"
+					],
+					"query": [
+						{
+							"key": "subscription-key",
+							"value": "{subscription-key}"
+						},
+						{
+							"key": "api-version",
+							"value": "2.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete UNIT state",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{geography}.atlas.microsoft.com/featureStateSets/{statesetId}/featureStates/{featureId}?api-version=2.0&subscription-key={subscription-key}&stateKeyName={stateKeyName}",
+					"protocol": "https",
+					"host": [
+						"{geography}",
+						"atlas",
+						"microsoft",
+						"com"
+					],
+					"path": [
+						"featureStateSets",
+						"{statesetId}",
+						"featureStates",
+						"{featureId}"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2.0"
+						},
+						{
+							"key": "subscription-key",
+							"value": "{subscription-key}"
+						},
+						{
+							"key": "stateKeyName",
+							"value": "{stateKeyName}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>Indoor Map</title>
+
+    <link
+      rel="stylesheet"
+      href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css"
+      type="text/css"
+    />
+
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      #map-id {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map-id"></div>
+    <script>
+      function GetMap() {
+        const subscriptionKey = "-JtDH6QXJsjcn0Vpsj2A_hoM9yuo7VlVkyRNGDretUs";
+        const tilesetId = "4c7069f6-f1ae-8529-99ea-1918c8fb80d8";
+        const statesetId = "3577ceb1-f365-958d-92d5-5b6d7b7304ca";
+
+        // Create Azure map
+        const map = new atlas.Map("map-id", {
+          //use your facility's location
+          //or, you can use bounds: [# west, # south, # east, # north] and replace # with your Map bounds
+          center: [120.67397132513491, 24.30318409195953],
+          style: "auto",
+          view: "Auto",
+          authOptions: {
+            authType: "subscriptionKey",
+            subscriptionKey: subscriptionKey,
+          },
+          zoom: 19,
+        });
+
+        // Add ready event to run function
+        map.events.add("ready", function () {
+          // Add a map style selection control.
+          map.controls.add(
+            new atlas.control.StyleControl({ mapStyles: "all" }),
+            { position: "top-right" }
+          );
+
+          // Create an indoor maps manager.
+          indoorManager_use = new atlas.indoor.IndoorManager(map, {
+            theme: "light", // [auto, light bark]
+            tilesetId: tilesetId,
+            statesetId: statesetId,
+          });
+
+          // Add a level control to the indoor manager.
+          indoorManager_use.setOptions({
+            levelControl: new atlas.control.LevelControl({
+              position: "top-right",
+            }),
+          });
+
+          // Set DynamicStyling
+          if (statesetId.length > 0) {
+            indoorManager_use.setDynamicStyling(true);
+          }
+
+          //Add event for when the focused facility changes.
+          map.events.add("facilitychanged", indoorManager_use, (eventData) => {
+            //code that you want to run after a facility has been changed
+            writeToInfoPanel("The facility has changed:", eventData);
+          });
+
+          // Add click event, UNIT's information will be show in Information box
+          map.events.add("click", function (e) {
+            var features = map.layers.getRenderedShapes(e.position, "unit");
+            console.log(features);
+            writeToInfoPanel("Information box:", features);
+          });
+        });
+        function writeToInfoPanel(msg, json) {
+          document.getElementById("infoPanel-msg").innerHTML = msg;
+          document.getElementById("infoPanel-json").value = JSON.stringify(
+            Object.assign({}, json, { map: undefined }),
+            null,
+            "\t"
+          ).replace(/\"([^(\")"]+)\":/g, "$1:");
+        }
+      }
+    </script>
+  </body>
+  <body onload="GetMap()">
+    <div
+      id="myMap"
+      style="position: relative; width: 100%; min-width: 290px; height: 600px"
+    ></div>
+
+    <div
+      id="infoPanel"
+      style="
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 260px;
+        height: 580px;
+        order: solid 1px #000;
+        background-color: white;
+        padding: 5px;
+      "
+    >
+      <div id="infoPanel-msg"></div>
+      <textarea
+        id="infoPanel-json"
+        style="width: 250px; height: 550px; white-space: nowrap"
+      ></textarea>
+    </div>
+  </body>
+</html>
