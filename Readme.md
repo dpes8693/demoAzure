@@ -17,7 +17,7 @@ key:私訊
 
 ---
 
-#[Azure] Indoor Maps + Digital Twins教學
+# [Azure] Indoor Maps + Digital Twins教學
 因緣際會下參加微軟workshop以下紀錄Indoor Maps從無到有的流程
 首先當然要有Azure帳戶且要有一定的權限才能建立資源~
 很多參數都是預設的沒有特別調整 focus在UI流程
@@ -33,22 +33,22 @@ key:{
 }
 ```
 基本
-<!-- ![建立資源群組](https://i.imgur.com/QWfy21L.png) -->
+![建立資源群組](https://i.imgur.com/QWfy21L.png)
 api-template-postman.json 匯入postman 
-<!-- ![](https://i.imgur.com/s6AO41Y.png) -->
+![](https://i.imgur.com/s6AO41Y.png)
 
 
 
 ## ==Azure Maps==
 1.[建立] Azure Maps Account & Creator
-<!-- ![Azure Map](https://i.imgur.com/6UWdQNf.png) -->
-<!-- ![輸入名稱後建立AzureMapAccount](https://i.imgur.com/jafgAA6.png) -->
+![Azure Map](https://i.imgur.com/6UWdQNf.png)
+![輸入名稱後建立AzureMapAccount](https://i.imgur.com/jafgAA6.png)
 ![完成後要複製2組token](https://i.imgur.com/O2f1yNh.png)
 進去把 "clientId"(用戶識別碼) + "PrimaryKey"(主金鑰) 存起來
 接著設定Maps Creator
-<!-- ![點Create](https://i.imgur.com/WMHx44I.png)
+![點Create](https://i.imgur.com/WMHx44I.png)
 ![輸入名稱和容量](https://i.imgur.com/1DbvRVz.png)
-![完成後會有2個資源](https://i.imgur.com/5uEQ6Cp.png) -->
+![完成後會有2個資源](https://i.imgur.com/5uEQ6Cp.png)
 
 
 
@@ -56,11 +56,11 @@ api-template-postman.json 匯入postman
 要先複製2個token碼才能做下一步
 到 https://maps-diagnostic-tool.azureedge.net/setup 
 貼上2個token [clientId + PrimaryKey]
-<!-- ![選2.0 新增zip](https://i.imgur.com/U6nu0ce.png) -->
-<!-- ![點covert轉換](https://i.imgur.com/1X2Lghm.png) -->
+![選2.0 新增zip](https://i.imgur.com/U6nu0ce.png)
+![點covert轉換](https://i.imgur.com/1X2Lghm.png)
 完成後把第三,四的 "datasetId" + "tilesetId" 存起來
-<!-- ![3.datasetId](https://i.imgur.com/uoFpGUm.png) -->
-<!-- ![4.tilesetId](https://i.imgur.com/7hLVb2a.png) -->
+![3.datasetId](https://i.imgur.com/uoFpGUm.png)
+![4.tilesetId](https://i.imgur.com/7hLVb2a.png)
 
 3.[Postman]打POST拿"statesetId"存起來
 ![PrimaryKey + datasetId](https://i.imgur.com/eNCYhRB.png)
@@ -78,4 +78,4 @@ api-template-postman.json 匯入postman
 ---
 
 ## ==Digital Twins==
-<!-- ![Azure Digital Twins](https://i.imgur.com/QUs94GF.png) -->
+![Azure Digital Twins](https://i.imgur.com/QUs94GF.png)
