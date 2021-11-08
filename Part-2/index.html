@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>Taya Indoor Maps App</title>
+
+    <link
+      rel="stylesheet"
+      href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+
+    <!-- Add references to the Azure Maps Map Creator module JavaScript and CSS files. -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+    <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+
+    <script src="indoor-Taya.js"></script>
+    <link rel="stylesheet" type="text/css" href="indoorMap.css" />
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body onload="GetMap()">
+    <div id="map-id"></div>
+<!-- part2 -->
+    <div style="position: static; z-index: 1">
+      <div id="popup" class="popup">
+        <div class="icon-area">
+          <img
+            class="close-icon"
+            src="https://drive.google.com/uc?export=download&id=1YT3sZxH2furCr2EgwgOLOVx-5S8fa1qr"
+            onclick=""
+          />
+        </div>
+        <div id="text-area" class="text-area">
+          <h3 id="unitname" class="popouttext">布輪機(機台名稱)</h3>
+          <h3 id="unitId" class="popouttext">(機台名稱)</h3>
+          <div class="center-area">
+            <img
+              src="https://drive.google.com/uc?export=download&id=1Rei6J5hOBpzDuDTV53V0pSA8DB4OudqQ"
+              style="width: 250px; height: 200px; margin: 0px auto"
+            />
+          </div>
+          <h5 class="popouttext">狀態</h5>
+          <hr id="popoutdivider" />
+        </div>
+      </div>
+
+      <div
+        class="card"
+        style="position: absolute; top: 5em; left: 5em; width: 18rem"
+      >
+        <div class="card-body" style="background-color: #9dc3e6">
+          <h5 class="card-title">Information Card</h5>
+          <p class="card-text">
+            This is the Information card, click the icon to show exit or
+            specific zone.
+          </p>
+          <hr class="dashed" />
+          <div class="icon-container">
+            <div class="info-card-icon-section">
+              <img
+                class="info-card-icon"
+                src="https://drive.google.com/uc?export=download&id=1j_AjeTC6RbMIghxoVT67GM9YMIbu7L6g"
+                onclick=""
+              />
+              <h5 class="info-card-text">zone1</h5>
+            </div>
+            <div class="info-card-icon-section">
+              <img
+                class="info-card-icon"
+                src="https://drive.google.com/uc?export=download&id=1j_AjeTC6RbMIghxoVT67GM9YMIbu7L6g"
+                onclick=""
+              />
+              <h5 class="info-card-text">zone2</h5>
+            </div>
+            <div class="info-card-icon-section">
+              <img
+                class="info-card-icon"
+                src="https://drive.google.com/uc?export=download&id=18_Tma0mgJlYHcGEhA0WwFyP7nTq-zXti"
+                onclick=""
+              />
+              <h5 class="info-card-text">status</h5>
+            </div>
+
+            <div class="info-card-icon-section">
+              <img
+                class="info-card-icon"
+                src="https://drive.google.com/uc?export=download&id=1Tg0sYLh9v7r0Wxz7cMoZ2jGSziIiisqs"
+                onclick=""
+              />
+              <h5 class="info-card-text">order</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- alert驚嘆號 https://drive.google.com/uc?export=download&id=1vRvqYqfUtdk1S7yD3PFXmLVRLi7m3drV -->
+  <!-- close箭頭左 https://drive.google.com/uc?export=download&id=1YT3sZxH2furCr2EgwgOLOVx-5S8fa1qr -->
+  <!-- exit離開 https://drive.google.com/uc?export=download&id=1Ya8hTT8ZDI1kbOyNgTHrDkLoU89BZrnc -->
+  <!-- machine機台 https://drive.google.com/uc?export=download&id=1Rei6J5hOBpzDuDTV53V0pSA8DB4OudqQ -->
+  <!-- order表 https://drive.google.com/uc?export=download&id=1Tg0sYLh9v7r0Wxz7cMoZ2jGSziIiisqs -->
+  <!-- status狀態 https://drive.google.com/uc?export=download&id=18_Tma0mgJlYHcGEhA0WwFyP7nTq-zXti -->
+  <!-- zone區域 https://drive.google.com/uc?export=download&id=1j_AjeTC6RbMIghxoVT67GM9YMIbu7L6g -->
+</html>

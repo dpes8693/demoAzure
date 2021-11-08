@@ -1,0 +1,20 @@
+{
+ "@id": "dtmi:daya:Floor;3",
+ "@type": "Interface",
+ "@context": [
+  "dtmi:dtdl:context;2"
+ ],
+ "displayName": "Floor",
+ "contents": [
+  {
+   "@type": "Property",
+   "name": "FloorLevel",
+   "schema": "string"
+  },
+  {
+   "@type": "Relationship",
+   "name": "contains",
+   "displayName": "contains"
+  }
+ ]
+}

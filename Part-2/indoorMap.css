@@ -1,0 +1,169 @@
+html,
+body {
+width: 100%;
+height: 100%;
+padding: 0;
+margin: 0;
+}
+
+#map-id {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* z-index: -1; */
+}
+
+/**************** Information Card******************/
+
+.dashed {
+    border-top: 2px dashed #dcdcdc;
+}
+
+.icon-container{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 5px;
+}
+
+
+.info-card-icon-section:hover {
+    background-color: #71a8da;
+}
+
+
+.info-card-icon {
+    width: 45px;
+    height: 45px;
+}
+
+.info-card-text {
+    padding-top: 1px;
+    padding-left: 3.5px;
+}
+
+
+
+/**************** Custom Info Box for Debug ******************/
+
+.customInfobox {
+    max-width: 240px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.customInfobox .name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/**************** Information Popup Box******************/
+
+.icon-area{
+    position: relative;
+    height: 50px;
+    padding: 0.5em 0.5em;
+}
+.icon-area .close-icon{
+    width:25px; 
+    height:40px; 
+    right:0pz; 
+    cursor: pointer;
+}
+.text-area{
+    position: relative;
+    padding: 10px 10px;
+    /* background-color: blue; */
+    height: 100%;
+}
+.center-area{
+    margin: 0px auto;
+    text-align: center;
+}
+hr {
+    border: 0;
+    border-top: 3px solid white;
+}
+.popup {
+    position: absolute;
+    visibility: hidden;
+    /* z-index: 1; */
+    width: 18rem;
+    height: 100%;
+    right: 0;
+    background-color: #696969;
+    color: white;
+    font-weight: bold;
+}
+
+.popup .popouttext {
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    /* padding: 8px 10px; */
+    position:  relative;
+    
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    padding: 0px 20px;
+    /* height: 30px; */
+    align-items: baseline;
+    margin-bottom: 30px;
+}
+.numberbox{
+    background-color: #9DC3E6;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    padding: 2px;
+    margin: 0px 10px 0px 10px;
+}
+.feature-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+}
+.featuretext{
+    display: flex;
+}
+.featurerighttext{
+    display: flex;
+    text-align: right;
+}
+
+.popup .unitinfor {
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 30px 10px;
+    position: relative;
+    
+}
+.popup .stateinfor {
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 0px 10px;
+    position: relative;
+}
+
+.popup.show {
+    position: absolute;
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}

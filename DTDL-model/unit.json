@@ -1,0 +1,31 @@
+{
+    "@id": "dtmi:daya:Unit;4",
+    "@type": "Interface",
+    "@context": [
+     "dtmi:dtdl:context;2"
+    ],
+    "displayName": "Unit",
+    "contents": [
+     {
+      "@type": "Property",
+      "name": "Category",
+      "schema": "string"
+     },
+     {
+        "@type": "Property",
+        "name": "InBuiltTemperature",
+        "schema": "double"
+    },
+    {
+        "@type": "Property",
+        "name": "OrderNum",
+        "schema": "integer"
+    },
+    {
+        "@type": "Property",
+        "name": "StatusCode",
+        "schema": "string"
+    }
+
+    ]
+}
